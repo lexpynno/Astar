@@ -6,8 +6,6 @@
 package astar;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
 
 /**
  *
@@ -26,11 +24,10 @@ public class AstarAlgoritmi {
  */
     public Piste Astar(Piste alku, Piste loppu) {
         this.vertailija = new Vertailija(loppu);
-        PriorityQueue<Piste> tutkittavat = new PriorityQueue<Piste>(alku.getAndSetEtaisyysMaaliin(loppu),
-                vertailija);
+        Keko<Piste> tutkittavat = new Keko<>(vertailija);
 
         tutkittavat.add(alku);
-        ArrayList<Piste> kasitellyt = new ArrayList<>();
+        Lista<Piste> kasitellyt = new Lista<>();
 
         while (!tutkittavat.isEmpty()) {
             Piste piste = tutkittavat.poll();

@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package astar;
 
 import java.util.Comparator;
 
 /**
+ * Prioriteetti jonoon tarvittava olio, joka vertailee keon sisaisia
+ * elementteja.
  *
  * @author Leo
  */
@@ -18,7 +15,7 @@ public class Vertailija implements Comparator<Piste> {
     public Vertailija(Piste maali) {
         this.maali = maali;
     }
-    
+
     @Override
     public int compare(Piste eka, Piste toka) {
         return eka.getAndSetEtaisyysMaaliin(maali) - toka.getAndSetEtaisyysMaaliin(maali);

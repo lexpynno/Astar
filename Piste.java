@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package astar;
 
 import java.util.ArrayList;
@@ -27,27 +22,37 @@ public class Piste {
         return x;
     }
 
+    public Piste getEdellinen() {
+        return edellinen;
+    }
+
     /**
-     * Laskee ja palauttaa pisteen etaisyyden haluttuun pisteeseen
+     * Laskee ja palauttaa pisteen etaisyyden linnuntieta haluttuun pisteeseen
      *
      * @param maali
-     * @return
+     * @return etaisyysMaaliin
+     *
      */
     public int getAndSetEtaisyysMaaliin(Piste maali) {
-        int palautus = Math.abs(this.getX() - maali.getX());
-        palautus += Math.abs(this.getY() - maali.getY());
-        return palautus;
+//        int palautus = Math.max(Math.abs(y - maali.getY()), Math.abs(x - maali.getX()));
+//        etaisyysMaaliin = palautus;
+        double palautus = Math.pow(this.getX() - maali.getX(), 2)
+                + Math.pow(this.getY() - maali.getY(), 2);
+        palautus = Math.sqrt(palautus);
+        etaisyysMaaliin = (int) palautus;
+        return etaisyysMaaliin;
     }
 
     public Piste(int x, int y, Piste edellinen) {
-        this.y = y;
         this.x = x;
+        this.y = y;
         this.edellinen = edellinen;
     }
 
     @Override
     public String toString() {
-        return "Piste{" + "y=" + y + ", x=" + x + ", etaisyysMaaliin=" + etaisyysMaaliin + "  " + edellinen + '}';
+        return "Piste" + " x = " + x + ", y = " + y + ", etaisyysMaaliin = " 
+                + etaisyysMaaliin + "\n" + edellinen;
     }
 
     public void setY(int y) {
@@ -59,24 +64,24 @@ public class Piste {
     }
 
     /**
-     * Luo ja palauttaa pisteen naapurit
+     * Luo ja palauttaa Listan naapuripisteita
      *
      * @return
      */
     public ArrayList<Piste> Naapurit() {
-        ArrayList<Piste> palautus = new ArrayList<Piste>();
-        palautus.add(new Piste(y + 1, x, this));
-        palautus.add(new Piste(y, x - 1, this));
-        palautus.add(new Piste(y, x + 1, this));
-        palautus.add(new Piste(y - 1, x, this));
+        ArrayList<Piste> palautus = new ArrayList<>();
+        palautus.add(new Piste(x + 1, y, this));
+        palautus.add(new Piste(x, y - 1, this));
+        palautus.add(new Piste(x, y + 1, this));
+        palautus.add(new Piste(x - 1, y, this));
         return palautus;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + this.y;
-        hash = 29 * hash + this.x;
+        int hash = 7;
+        hash = 97 * hash + this.y;
+        hash = 97 * hash + this.x;
         return hash;
     }
 
