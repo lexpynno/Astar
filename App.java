@@ -13,9 +13,16 @@ public class App {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        long aikaAlussa = System.currentTimeMillis();
         AstarAlgoritmi a = new AstarAlgoritmi();
-        Piste p = a.Astar(new Piste(10, 10, null), new Piste(-20, 40, null));
+
+        Piste p = a.Astar(new Piste(0, 0, null), new Piste(1000, 1000, null));
+// Pisteiden koordinaatteja voi halutessaan muuttaa. Ensimmainen arvo on X ja toinen Y.
+// Ensimmainen piste on alku ja toien loppu.
+
         System.out.println(p);
+        long aikaLopussa = System.currentTimeMillis();
+        System.out.println("Aikaa kului: " + (aikaLopussa - aikaAlussa) + " millisekunttia");
     }
 
 }

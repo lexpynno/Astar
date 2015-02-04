@@ -1,5 +1,6 @@
 package astar;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -18,6 +19,12 @@ public class Lista<E> implements Iterable<E> {
         taulukonKoko = 10;
         taulukko = new Object[taulukonKoko];
         koko = 0;
+    }
+
+    public Lista(ArrayList a) {
+        taulukonKoko = a.size();
+        koko = a.size();
+        taulukko = a.toArray();
     }
 
     public int getKoko() {

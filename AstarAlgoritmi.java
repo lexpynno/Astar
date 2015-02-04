@@ -36,7 +36,7 @@ public class AstarAlgoritmi {
                 if (piste.equals(loppu)) {
                     return piste;
                 } else {
-                    ArrayList<Piste> naapurit = piste.Naapurit();
+                    Lista<Piste> naapurit = new Lista(piste.Naapurit());
 
                     for (Piste p : naapurit) {
                         if (!kasitellyt.contains(p)) {
