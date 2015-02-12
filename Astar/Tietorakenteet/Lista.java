@@ -21,6 +21,11 @@ public class Lista<E> implements Iterable<E> {
         koko = 0;
     }
 
+    /**
+     * Luo listan javan valmiista ArrayListista a.
+     *
+     * @param a
+     */
     public Lista(ArrayList a) {
         taulukonKoko = a.size();
         koko = a.size();
@@ -79,6 +84,13 @@ public class Lista<E> implements Iterable<E> {
         }
     }
 
+    /**
+     * Tarkistaa sisaltaako lista objektin o ja palauttaa truen, mikali niin on,
+     * muuten false.
+     *
+     * @param o
+     * @return
+     */
     public boolean contains(Object o) {
         E otus;
         try {
@@ -98,11 +110,20 @@ public class Lista<E> implements Iterable<E> {
         return koko == 0;
     }
 
+    /**
+     * Luo listaolion tarvitseman Osoittimen, joka on rakennettu alkuperaisen
+     * iteraattorin tapaan.
+     *
+     * @return
+     */
     @Override
     public Iterator<E> iterator() {
         return new Osoitin();
     }
 
+    /**
+     * Iteraattorin korvaava olio.
+     */
     public class Osoitin implements Iterator<E> {
 
         private int indeksi;

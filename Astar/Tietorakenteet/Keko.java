@@ -3,6 +3,8 @@ package astar;
 import java.util.Comparator;
 
 /**
+ * Itse rakennettu kekorakenne hakualgoritmia varten. Keko saa vertailijan ja
+ * sisaltaa listan, joka on sen varsinainen sisainen rakenne.
  *
  * @author Leo
  */
@@ -19,23 +21,24 @@ public class Keko<E> {
      */
     public Keko(Comparator<? super E> vertailija) {
         this.vertailija = vertailija;
-        this.listanKoko = 11;
+        this.listanKoko = 10;
         this.lista = new Object[listanKoko];
     }
 
     /**
-     * Palauttaa keon minimialkion(elementin) ja palauttaa kekorakenteen.
+     * Palauttaa keon minimialkion(elementin) ja palauttaa kekorakenteen heapify
+     * komennolla.
      *
      */
     public E poll() {
         if (size == 0) {
             return null;
         }
-        E max = (E) (lista[0]);
+        E min = (E) (lista[0]);
         lista[0] = lista[size - 1];
         size--;
         heapify(0);
-        return max;
+        return min;
     }
 
     public boolean isEmpty() {
@@ -116,7 +119,8 @@ public class Keko<E> {
     }
 
     /**
-     * Palauttaa keon rakenteen kun se on muuttunut.
+     * Palauttaa keon rakenteen sisaiseen taulukkoon vertailemalla haluttuja
+     * elementteja ja vaihtamalla niiden paikkaa tarvittaessa.
      *
      * @param i
      */

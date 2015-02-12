@@ -8,20 +8,23 @@ package astar;
 import java.util.ArrayList;
 
 /**
+ * Sisaltaa Astar hakualgoritmin ja tuntee Vertailijan luokan edustajan. Keon
+ * ominaisuuksia kayttaen loytaa lyhyimman reitin annetusta pisteesta maaliin.
  *
  * @author Leo
  */
 public class AstarAlgoritmi {
 
     private Vertailija vertailija;
-/**
- * Varsinainen Astar hakualgoritmi, joka palauttaa viimeisen pisteen jos se vastaa maalia.
- * Palauttaa null jos maalia ei löydy 
- * 
- * @param alku
- * @param loppu
- * @return 
- */
+
+    /**
+     * Varsinainen Astar hakualgoritmi, joka palauttaa viimeisen pisteen jos se
+     * vastaa maalia. Palauttaa null jos maalia ei löydy
+     *
+     * @param alku
+     * @param loppu
+     * @return
+     */
     public Piste Astar(Piste alku, Piste loppu) {
         this.vertailija = new Vertailija(loppu);
         Keko<Piste> tutkittavat = new Keko<>(vertailija);

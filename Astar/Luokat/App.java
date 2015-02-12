@@ -16,7 +16,7 @@ public class App {
         long aikaAlussa = System.currentTimeMillis();
         AstarAlgoritmi a = new AstarAlgoritmi();
 
-        Piste p = a.Astar(new Piste(0, 0, null), new Piste(1000, 1000, null));
+        Piste p = a.Astar(new Piste(0, 0, null), new Piste(200, 300, null));
 // Pisteiden koordinaatteja voi halutessaan muuttaa. Ensimmainen arvo on X ja toinen Y.
 // Ensimmainen piste on alku ja toien loppu.
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
+ * Sisaltaa algoritmin navigointiin tarvitsemat koordinaatistopisteet.
  *
  * @author Leo
  */
@@ -49,9 +50,14 @@ public class Piste {
         this.edellinen = edellinen;
     }
 
+    /**
+     *
+     * @return palauttaa pisteen koordinaatit, etaisyyden maaliin ja edellisen
+     * pisteen, josta tahan on tultu.
+     */
     @Override
     public String toString() {
-        return "Piste" + " x = " + x + ", y = " + y + ", etaisyysMaaliin = " 
+        return "Piste" + " x = " + x + ", y = " + y + ", etaisyysMaaliin = "
                 + etaisyysMaaliin + "\n" + edellinen;
     }
 
@@ -64,7 +70,8 @@ public class Piste {
     }
 
     /**
-     * Luo ja palauttaa Listan naapuripisteita
+     * Luo ja palauttaa Listan naapuripisteita, joilla edellinen piste on tama
+     * nykyinen.
      *
      * @return
      */
@@ -77,6 +84,10 @@ public class Piste {
         return palautus;
     }
 
+    /**
+     * Hajautusfunktio, joka tarvittaessa helpottaisi pisteiden etsimista.
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -85,6 +96,14 @@ public class Piste {
         return hash;
     }
 
+    /**
+     * Tarkistaa onko toisella pisteella samat koordinaatit. Edellisen ei
+     * tarvitse olla sama, silla pisteet luodaan sellaisessa jarjestyksessa,
+     * etta paras pysyy voimassa.
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
