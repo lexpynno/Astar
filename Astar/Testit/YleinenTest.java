@@ -12,13 +12,16 @@ public class YleinenTest {
 
     AstarAlgoritmi a;
     Piste p;
-
+    BFS b;
+    Djikstra d;
     public YleinenTest() {
     }
 
     @Before
     public void setUp() {
         a = new AstarAlgoritmi();
+        b = new BFS();
+        d = new Djikstra();
         p = a.Astar(new Piste(10, 10, null), new Piste(20, 40, null));
     }
 
@@ -35,8 +38,8 @@ public class YleinenTest {
 
     @Test
     public void tunnistaaPisteenSamaksi2() {
-        Piste piste = new Piste(1, 4, null);
-        assertEquals(piste, new Piste(1, 4, null));
+        Piste piste = new Piste(1, -4, null);
+        assertEquals(piste, new Piste(1, -4, null));
     }
 
     @Test
@@ -45,8 +48,18 @@ public class YleinenTest {
     }
 
     @Test
-    public void ajoToimii() {
+    public void ajoToimiiAstarilla() {
         assertEquals(p, a.Astar(new Piste(20, 31, null), new Piste(20, 40, null)));
+    }
+        @Test
+    public void ajoToimiiBFSlla() {
+        Piste p = new Piste(20, 40, null);
+        assertEquals(p, b.BFS(new Piste(20, 31, null), new Piste(20, 40, null)));
+    }
+        @Test
+    public void ajoToimiiDjikstralla() {
+        Piste p = new Piste(20, 40, null);
+        assertEquals(p, d.Djikstra(new Piste(20, 31, null), new Piste(20, 40, null)));
     }
 
     @Test

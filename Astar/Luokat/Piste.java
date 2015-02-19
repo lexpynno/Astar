@@ -14,6 +14,7 @@ public class Piste {
     private int x;
     private int etaisyysMaaliin;
     private Piste edellinen;
+    private int edellistenMaara;
 
     public int getY() {
         return y;
@@ -27,6 +28,10 @@ public class Piste {
         return edellinen;
     }
 
+    public int getEdellistenMaara() {
+        return edellistenMaara;
+    }
+
     /**
      * Laskee ja palauttaa pisteen etaisyyden linnuntieta haluttuun pisteeseen
      *
@@ -35,8 +40,6 @@ public class Piste {
      *
      */
     public int getAndSetEtaisyysMaaliin(Piste maali) {
-//        int palautus = Math.max(Math.abs(y - maali.getY()), Math.abs(x - maali.getX()));
-//        etaisyysMaaliin = palautus;
         double palautus = Math.pow(this.getX() - maali.getX(), 2)
                 + Math.pow(this.getY() - maali.getY(), 2);
         palautus = Math.sqrt(palautus);
@@ -45,6 +48,11 @@ public class Piste {
     }
 
     public Piste(int x, int y, Piste edellinen) {
+        if (edellinen == null) {
+            this.edellistenMaara = 0;
+        } else {
+            this.edellistenMaara = 1 + edellinen.getEdellistenMaara();
+        }
         this.x = x;
         this.y = y;
         this.edellinen = edellinen;
@@ -86,6 +94,7 @@ public class Piste {
 
     /**
      * Hajautusfunktio, joka tarvittaessa helpottaisi pisteiden etsimista.
+     *
      * @return
      */
     @Override

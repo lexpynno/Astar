@@ -107,7 +107,10 @@ public class Lista<E> implements Iterable<E> {
     }
 
     public boolean isEmpty() {
-        return koko == 0;
+        if (koko == 0) {
+            return true;
+        }
+        return false;
     }
 
     /**

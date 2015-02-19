@@ -5,39 +5,39 @@
  */
 package astar;
 
-import java.util.ArrayList;
-
 /**
- * Sisaltaa Astar hakualgoritmin ja tuntee Vertailijan luokan edustajan. Keon
- * ominaisuuksia kayttaen loytaa lyhyimman reitin annetusta pisteesta maaliin.
+ * Bread-First-Search -Algorithm eli algoritmi, joka etsii leveys-suunnassa
+ * maalipisteen alkupisteesta lahtien.
  *
  * @author Leo
  */
-public class AstarAlgoritmi {
+public class BFS {
 
-    private AstarVertailija vertailija;
+    Lista tutkittavat = new Lista();
+    Lista kasitellyt = new Lista();
 
     /**
-     * Varsinainen Astar hakualgoritmi, joka palauttaa viimeisen pisteen jos se
-     * vastaa maalia ja sita kautta koko pisteketjun alusta loppuun. Palauttaa
-     * null jos maalia ei loydy
+     * Varsinainen BFS hakualgoritmi, joka palauttaa viimeisen pisteen jos se
+     * vastaa maalia ja sita kautta koko pisteketjun. Palauttaa null jos maalia
+     * ei loydy
      *
      * @param alku
-     * @param loppu
+     * @param maali
      * @return
      */
-    public Piste Astar(Piste alku, Piste loppu) {
-        this.vertailija = new AstarVertailija(loppu);
-        Keko<Piste> tutkittavat = new Keko<>(vertailija);
+    public Piste BFS(Piste alku, Piste maali) {
 
+        if (alku.equals(maali)) {
+            return alku;
+        }
         tutkittavat.add(alku);
-        Lista<Piste> kasitellyt = new Lista<>();
 
         while (!tutkittavat.isEmpty()) {
-            Piste piste = tutkittavat.poll();
+            Piste piste = (Piste) tutkittavat.get(0);
+            tutkittavat.poisto(0);
             if (!kasitellyt.contains(piste)) {
                 kasitellyt.add(piste);
-                if (piste.equals(loppu)) {
+                if (piste.equals(maali)) {
                     return piste;
                 } else {
                     Lista<Piste> naapurit = new Lista(piste.Naapurit());
@@ -49,7 +49,6 @@ public class AstarAlgoritmi {
                     }
                 }
             }
-
         }
         return null;
     }

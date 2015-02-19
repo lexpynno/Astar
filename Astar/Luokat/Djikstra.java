@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package astar;
 
 import java.util.ArrayList;
 
 /**
- * Sisaltaa Astar hakualgoritmin ja tuntee Vertailijan luokan edustajan. Keon
+ * Sisaltaa Djikstra hakualgoritmin ja tuntee Vertailijan luokan edustajan. Keon
  * ominaisuuksia kayttaen loytaa lyhyimman reitin annetusta pisteesta maaliin.
  *
  * @author Leo
  */
-public class AstarAlgoritmi {
+public class Djikstra {
 
-    private AstarVertailija vertailija;
+    private DjikstraVertailija vertailija;
 
     /**
-     * Varsinainen Astar hakualgoritmi, joka palauttaa viimeisen pisteen jos se
+     * Varsinainen Djikstra hakualgoritmi, joka palauttaa viimeisen pisteen jos se
      * vastaa maalia ja sita kautta koko pisteketjun alusta loppuun. Palauttaa
      * null jos maalia ei loydy
      *
@@ -26,8 +22,8 @@ public class AstarAlgoritmi {
      * @param loppu
      * @return
      */
-    public Piste Astar(Piste alku, Piste loppu) {
-        this.vertailija = new AstarVertailija(loppu);
+    public Piste Djikstra(Piste alku, Piste loppu) {
+        this.vertailija = new DjikstraVertailija(loppu);
         Keko<Piste> tutkittavat = new Keko<>(vertailija);
 
         tutkittavat.add(alku);
